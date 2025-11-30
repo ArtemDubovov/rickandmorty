@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../../pages/Home";
 import CardInfo from "../../pages/CardInfo";
 import Error from "../../pages/Error";
+import Layout from "../layout/Layout";
 
 const routers = [
 	{
@@ -25,7 +26,10 @@ function AppRouter() {
         <BrowserRouter>
             <Routes>
                 {
-                    routers.map(r => <Route key={r.path} path={r.path} element={r.element}/>)
+                    routers.map(r => <Route
+                        key={r.path} path={r.path}
+                        element={<Layout page={r.element}/>}/>
+                    )
                 }
             </Routes>
         </BrowserRouter>
