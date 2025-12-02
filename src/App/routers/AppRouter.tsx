@@ -12,7 +12,7 @@ const routers = [
 		element: <Home />,
 	},
 	{
-		path: "/card",
+		path: "/card/:id",
 		element: <CardInfo />,
 	},
     {

@@ -44,11 +44,11 @@ const GET_ALL_CHARACTERS = (): TypedDocumentNode =>  gql`
                 species
                 image
                 gender
+                created
                 episode {
                     id
                     name
                 }
-                created
                 origin {
                     name
                 }

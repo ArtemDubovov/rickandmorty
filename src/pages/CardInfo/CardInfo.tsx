@@ -1,11 +1,11 @@
 import React from "react";
 
-function CardInfo() {
+function CharacterInfo() {
     return(
         <div>
-            card
+            CharacterInfo
         </div>
     )
 }
 
-export default CardInfo;
+export default CharacterInfo;
