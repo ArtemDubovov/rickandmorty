@@ -1,12 +1,17 @@
 import React from 'react';
+import { ApolloProvider } from "@apollo/client/react";
 
 import './styles/normolize.css';
 import './styles/global.css';
 import AppRouter from './routers';
+import { client } from '../shared/api/api';
+
 
 function App() {
   return (
-    <AppRouter />
+    <ApolloProvider client={client}>
+      <AppRouter />
+    </ApolloProvider>
   );
 }
 
