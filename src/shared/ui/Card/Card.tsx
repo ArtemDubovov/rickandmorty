@@ -14,9 +14,7 @@ const Card: FC<CardProps> = ({character}) => {
     const url = `/card/${id}`;
     return(
         <div className="card">
-            <h3>{name}</h3>
-            <p>Created: {created}</p>
-            <p>Status: {status}</p>
+            <h2>{name}</h2>
             <img src={image} alt={name}/>
             <Button text='More' link={url}/>
         </div>       

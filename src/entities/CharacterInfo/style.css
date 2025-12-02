@@ -1,0 +1,9 @@
+.character_info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.character_info_content_wrapper {
+    display: flex;
+    flex-direction: column;
+}

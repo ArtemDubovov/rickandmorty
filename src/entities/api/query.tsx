@@ -40,21 +40,7 @@ const GET_ALL_CHARACTERS = (): TypedDocumentNode =>  gql`
             results {
                 id
                 name
-                status
-                species
                 image
-                gender
-                created
-                episode {
-                    id
-                    name
-                }
-                origin {
-                    name
-                }
-                location {
-                    name
-                }
             }
         }
     }
@@ -68,6 +54,8 @@ const GET_CHARACTER = (id: number): TypedDocumentNode => gql`
             name
             species
             gender
+            status
+            created
             origin {
                 id
             }
@@ -80,8 +68,7 @@ const GET_CHARACTER = (id: number): TypedDocumentNode => gql`
                 id
             }
         }
-    }
-    
+    } 
 `
 
 
