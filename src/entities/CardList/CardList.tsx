@@ -2,16 +2,17 @@ import {FC} from "react";
 
 import { GetAllCharacters } from "../api/api";
 
-import CardCharacter from "../../shared/ui/CardCharacter/CardCharacter";
+import Card from "../../shared/ui/Card/Card";
 import { allCharactersType } from "../api/types";
 
 import './style.css';
 
 const CardList: FC = () => {
-    const {loading, error, info, result} = GetAllCharacters();
+    const {loading, error, data} = GetAllCharacters();
+    console.log(data?.characters.results);
     return(
         <div className="card_list">
-            {result && result.map((character: allCharactersType) => <CardCharacter character={character}/>)}
+            {data?.characters.results && data.characters.results.map((character: allCharactersType) => <Card character={character} />)}
         </div>
     )
 }

@@ -63,7 +63,7 @@ const GET_ALL_CHARACTERS = (): TypedDocumentNode =>  gql`
 
 const GET_CHARACTER = (id: number): TypedDocumentNode => gql`
     query GetCharacterByID {
-        character (id: 1) {
+        character (id: ${id}) {
             id
             name
             species

@@ -9,10 +9,7 @@ const client = new ApolloClient({
 
 function useFetch(query: TypedDocumentNode) {
     const {loading, error, data} = useQuery(query);
-    console.log(data);
-    const info = data?.characters.info;
-    const result = data?.characters.results;
-    return {loading, error, info, result};
+    return {loading, error, data};
 }
 
 export {useFetch, client};
