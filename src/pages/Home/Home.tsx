@@ -1,14 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 
-import { GetAllCharacters, GetCharacter, GetEpisode, GetAllEpisodes } from "../../entities/api/api";
-
-import CardList from "../../entities/CardList/CardList";
+import CardList from "../../widgets/CardList/CardList";
+import Pagination from "../../widgets/Pagination/Pagination";
 
 function Home() {
+    
+    const [pages, setPages] = useState({
+        prev: 0,
+        current: 1,
+        next: 2,
+    });
+    
+    const CBSetPages = useCallback(setPages, [setPages]);
 
     return(
         <div>
-            <CardList />
+            <Pagination pages={pages} setPages={CBSetPages}/>
+            <CardList page={pages.current}/>
         </div>
     )
 }

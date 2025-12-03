@@ -11,11 +11,10 @@ interface CharacterInfoProps {
 }
 
 const CharacterInfo: FC<CharacterInfoProps> = ({id}) => {
-    console.log(id);
     if (!id) {
         return <></>;
     }
-    const {loading, error, data} = GetCharacter(+id);
+    const {loading, error, data} = GetCharacter(id);
     const character = data?.character;
 
     return(

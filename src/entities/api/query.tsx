@@ -13,7 +13,7 @@ const GET_ALL_EPISODES = (): TypedDocumentNode => gql`
     }
 `;
 
-const GET_EPISODE = (id: number): TypedDocumentNode => gql`
+const GET_EPISODE = (id: string): TypedDocumentNode => gql`
     query GetEpisodeByID {
         episodesByIds(ids: ${id}) {
             characters {
@@ -28,14 +28,14 @@ const GET_EPISODE = (id: number): TypedDocumentNode => gql`
     }
 `
 
-const GET_ALL_CHARACTERS = (): TypedDocumentNode =>  gql`
+const GET_ALL_CHARACTERS = (page: string): TypedDocumentNode =>  gql`
     query GetCharacters {
-        characters {
+        characters (page: ${page}) {
             info {
-            count
-            pages
-            next
-            prev
+                count
+                pages
+                next
+                prev
             }
             results {
                 id
@@ -47,7 +47,7 @@ const GET_ALL_CHARACTERS = (): TypedDocumentNode =>  gql`
 `
 
 
-const GET_CHARACTER = (id: number): TypedDocumentNode => gql`
+const GET_CHARACTER = (id: string): TypedDocumentNode => gql`
     query GetCharacterByID {
         character (id: ${id}) {
             id
@@ -71,6 +71,18 @@ const GET_CHARACTER = (id: number): TypedDocumentNode => gql`
     } 
 `
 
+const GET_INFO_PAGE = () => {
+    return gql`
+        {
+            characters (page: 0) {
+                info {
+                    pages
+                }
+            }
+        }
+    `
+}
 
 
-export {GET_ALL_EPISODES, GET_EPISODE, GET_ALL_CHARACTERS, GET_CHARACTER};
+
+export {GET_ALL_EPISODES, GET_EPISODE, GET_ALL_CHARACTERS, GET_CHARACTER, GET_INFO_PAGE};

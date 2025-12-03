@@ -9,7 +9,7 @@ const Character = () => {
     if (!id) {
         return <></>; // Сделать переход на error
     }
-    const {loading, error, data} = GetCharacter(+id);
+    const {loading, error, data} = GetCharacter(id);
     console.log(data);
 
     return(

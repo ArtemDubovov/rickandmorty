@@ -1,9 +1,10 @@
 import {FC} from "react";
 
-import { allCharactersType } from "../../../entities/api/types";
+import { allCharactersType } from "../api/types";
 
 import './style.css';
-import Button from "../Button/ButtonLink";
+import Button from "../../shared/ui/Button/ButtonLink";
+
 
 interface CardProps {
     character: allCharactersType,
