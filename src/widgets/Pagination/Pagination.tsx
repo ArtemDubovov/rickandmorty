@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 
 import './style.css';
-import { getDecrPage, getIncrPage } from "../../features/pagination/pagination";
+import { getIncrPage, getDecrPage } from "../../features/pagination.tsx/pagination";
 
 interface PaginationProps {
     pages: {

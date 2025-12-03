@@ -6,7 +6,7 @@ import Card from "../../entities/Card/Card";
 import { allCharactersType } from "../../entities/api/types";
 
 import './style.css';
-import Pagination from "../Pagination/Pagination";
+import Loader from "../../shared/ui/Loader/Loader";
 
 interface CardListProps {
     page: number
@@ -15,7 +15,9 @@ interface CardListProps {
 const CardList: FC<CardListProps> = ({page}) => {
     const {loading, error, data} = GetAllCharacters(String(page));
     return(
+        
         <div className="card_list">
+            {loading && <Loader />}
             {data?.characters.results && data.characters.results.map((character: allCharactersType) => <Card key={character.id} character={character} />)}
         </div>
     )
