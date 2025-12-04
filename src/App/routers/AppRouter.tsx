@@ -30,9 +30,12 @@ function AppRouter() {
         <BrowserRouter>
             <Routes>
                 {
-                    routers.map(r => <Route
-                        key={r.path} path={r.path}
-                        element={<Layout page={r.element}/>}/>
+                    routers.map(r =>
+                        <Route
+                            key={r.path}
+                            path={r.path}
+                            element={<Layout page={r.element}/>}
+                        />
                     )
                 }
             </Routes>
