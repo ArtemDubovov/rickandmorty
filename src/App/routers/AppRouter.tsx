@@ -4,6 +4,7 @@ import Home from "../../pages/Home";
 import CardInfo from "../../pages/Character";
 import Error from "../../pages/Error";
 import Layout from "../layout/Layout";
+import Favorites from "../../pages/Favorites";
 
 const routers = [
 	{
@@ -13,6 +14,10 @@ const routers = [
 	{
 		path: "/card/:id",
 		element: <CardInfo />,
+	},
+    {
+		path: "/favorites",
+		element: <Favorites />,
 	},
     {
 		path: "/*",
