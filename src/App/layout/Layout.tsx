@@ -4,9 +4,6 @@ import Header from "../../widgets/Header";
 import Footer from "../../widgets/Footer";
 
 import './style.css';
-import Home from "../../pages/Home";
-import Favorites from "../../pages/Favorites";
-
 
 interface LayoutProps {
     page: React.ReactElement
