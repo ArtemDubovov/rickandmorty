@@ -1,18 +1,18 @@
 import {FC} from "react";
 
 import './style.css';
-import { Link } from "react-router-dom";
 
-interface BtnPaginationProps {
-    page: string,
-    url: string
+interface IBtnPaginationProps {
+    page: number,
+    fn?: () => void,
+    disabled?: boolean
 }
 
-const BtnPagination: FC<BtnPaginationProps> = ({page, url}) => {
+const BtnPagination: FC<IBtnPaginationProps> = ({page, fn, disabled = false}) => {
     return(
-        <Link to={url} className="btn-pagination">
+        <button disabled={disabled} onClick={fn} className="btn-pagination">
             {page}
-        </Link>
+        </button>
     )
 }
 

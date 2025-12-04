@@ -10,7 +10,7 @@ interface IStoreApp {
 }
 
 const useStoreApp = create<IStoreApp>()((set) => ({
-  page: 0,
+  page: 1,
   pageCount: 0,
   incrPage: () => set((state: IStoreApp) => ({ page: state.page + 1 })),
   decrPage: () => set((state: IStoreApp) => ({ page: state.page - 1 })),

@@ -3,7 +3,7 @@ import {FC} from "react";
 import { allCharactersType } from "../api/types";
 
 import './style.css';
-import Button from "../../shared/ui/Button/ButtonLink";
+import Button from "../../shared/ui/ButtonLink/ButtonLink";
 
 
 interface CardProps {
@@ -11,7 +11,7 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({character}) => {
-    const {name, created, status, image, id} = character;
+    const {name, image, id} = character;
     const url = `/card/${id}`;
     return(
         <div className="card">

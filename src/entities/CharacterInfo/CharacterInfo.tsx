@@ -2,9 +2,10 @@ import {FC} from "react";
 
 
 import { GetCharacter } from "../api/api";
-import Button from "../../shared/ui/Button/ButtonLink";
 
 import './style.css';
+import ErrorMessage from "../../shared/ui/ErrorMessage/ErrorMessage";
+import Loader from "../../shared/ui/Loader/Loader";
 
 interface CharacterInfoProps {
     id: string
@@ -19,6 +20,8 @@ const CharacterInfo: FC<CharacterInfoProps> = ({id}) => {
 
     return(
         <>
+            {loading && <Loader />}
+            {error && <ErrorMessage message={error.message}/>}
             {character && 
                 <div className="character_info">
                     <img src={character.image} alt={character.name}/>

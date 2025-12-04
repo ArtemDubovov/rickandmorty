@@ -1,7 +1,10 @@
 .btn-pagination {
-    padding: 6px;
-    margin: 6px;
-    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid rgb(197, 197, 197);
     border-radius: 50%;
-    background-color: rgba(6, 253, 6, 0.274);
+    background-color: rgba(136, 231, 136, 0.801);
+    cursor: pointer;
 }

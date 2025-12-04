@@ -3,12 +3,12 @@ import {FC} from "react";
 import './style.css';
 import { Link } from "react-router-dom";
 
-interface ButtonProps {
+interface IButtonProps {
     text: string,
     link: string
 }
 
-const Button: FC<ButtonProps> = ({text, link}) => {
+const Button: FC<IButtonProps> = ({text, link}) => {
     return(
         <Link className="button" to={link}>
             {text}
