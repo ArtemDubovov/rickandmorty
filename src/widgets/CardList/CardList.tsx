@@ -1,4 +1,4 @@
-import {FC, memo} from "react";
+import {FC, memo, useEffect} from "react";
 
 import { GetAllCharacters } from "../../entities/api/api";
 
@@ -15,7 +15,6 @@ interface CardListProps {
 const CardList: FC<CardListProps> = ({page}) => {
     const {loading, error, data} = GetAllCharacters(String(page));
     return(
-        
         <div className="card_list">
             {loading && <Loader />}
             {data?.characters.results && data.characters.results.map((character: allCharactersType) => <Card key={character.id} character={character} />)}

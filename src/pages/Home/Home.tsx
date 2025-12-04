@@ -1,22 +1,25 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
+import { useFetch } from "../../shared/api/api";
+import useStoreApp, {IStoreApp} from "../../App/providers/store";
+import { GET_INFO_PAGE } from "../../entities/api/query";
 
 import CardList from "../../widgets/CardList/CardList";
 import Pagination from "../../widgets/Pagination/Pagination";
 
 function Home() {
+    const {loading, error, data} = useFetch(GET_INFO_PAGE());
+    const {updatePageCount, page} = useStoreApp((state: IStoreApp) => state);
     
-    const [pages, setPages] = useState({
-        prev: 0,
-        current: 1,
-        next: 2,
-    });
-    
-    const CBSetPages = useCallback(setPages, [setPages]);
+    useEffect(() => { // Установлено кол-во страниц в глобальный стор
+        if (!loading && data) {
+            updatePageCount(data.characters.info.pages);
+        }
+    }, [loading, data, updatePageCount]);
 
     return(
         <div>
-            <Pagination pages={pages} setPages={CBSetPages}/>
-            <CardList page={pages.current}/>
+            <Pagination />
+            <CardList page={page}/>
         </div>
     )
 }

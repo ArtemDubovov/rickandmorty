@@ -2,35 +2,18 @@ import { FC, memo } from "react";
 
 import './style.css';
 import { getIncrPage, getDecrPage } from "../../features/pagination.tsx/pagination";
+import useStoreApp, { IStoreApp } from "../../App/providers/store";
 
-interface PaginationProps {
-    pages: {
-        prev: number;
-        current: number;
-        next: number;
-    },
-    setPages: React.Dispatch<React.SetStateAction<{
-        prev: number;
-        current: number;
-        next: number;
-    }>>
-}
-
-const Pagination: FC<PaginationProps>  = ({pages, setPages}) => {
-    const incrPage = () => {
-        setPages(getIncrPage(pages));
-
-    }
-
-    const decrPage = () => {
-        setPages(getDecrPage(pages));
-    }
+const Pagination = () => {
+    const {page, pageCount, decrPage, incrPage} = useStoreApp((store: IStoreApp) => store);
+    
     return(
         <div>
             <>      
-                {pages.prev > 0 && <button onClick={decrPage}>{pages.prev}</button>}
-                <button disabled>{pages.current}</button>
-                <button onClick={incrPage}>{pages.next}</button>
+                {page - 1 > 0 && <button onClick={decrPage}>{page - 1}</button>}
+                <button disabled>{page}</button>
+                {page + 1 <= pageCount &&<button onClick={incrPage}>{page + 1}</button>}
+
             </>
         </div>
     )
