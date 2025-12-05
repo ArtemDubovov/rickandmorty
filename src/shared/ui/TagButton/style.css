@@ -1,0 +1,7 @@
+.tag-button__active {
+    background-color: green;
+}
+
+.tag-button__inactive {
+    background-color: gray;
+}
