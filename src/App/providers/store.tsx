@@ -9,6 +9,7 @@ interface IStoreApp {
     favorites: Array<number>;
     incrPage: () => void;
     decrPage: () => void;
+    resetPage: () => void;
     updatePage: (newPage: number) => void;
     updatePageCount: (count: number) => void;
     removeFavorites: (id: number) => void;
@@ -21,6 +22,7 @@ const useStoreApp = create<IStoreApp>()((set) => ({
   favorites: [1, 2, 3],
   incrPage: () => set((state: IStoreApp) => ({ page: state.page + 1 })),
   decrPage: () => set((state: IStoreApp) => ({ page: state.page - 1 })),
+  resetPage: () => set((state: IStoreApp) => ({ page: 1 })),
   updatePage: (newPage: number) => set({ page: newPage }),
   updatePageCount: (count: number) => set({ pageCount: count }),
   removeFavorites: (id: number) => set((state: IStoreApp) => ({ favorites: removeID(state.favorites, id) })),

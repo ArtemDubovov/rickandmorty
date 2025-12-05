@@ -1,9 +1,9 @@
 import { useFetch } from "../../shared/api/api";
 
-import { GET_CHARACTER, GET_ALL_CHARACTERS, GET_ALL_EPISODES, GET_EPISODE, GET_INFO_PAGE } from "./query";
+import { GET_CHARACTER, GET_ALL_CHARACTERS, GET_ALL_EPISODES, GET_EPISODE, GET_INFO_PAGE, GET_CHARACTERS_BY_ID } from "./query";
 
-function GetAllCharacters (page: string) {
-    const res = useFetch(GET_ALL_CHARACTERS(page));
+function GetAllCharacters (page: string, filter: string) {
+    const res = useFetch(GET_ALL_CHARACTERS(page, filter));
     return res;
 }
 
@@ -27,4 +27,9 @@ function GetInfoPages () {
     return res;
 }
 
-export {GetAllCharacters, GetAllEpisodes, GetEpisode, GetCharacter, GetInfoPages};
+function GetCharactersByID (arr: Array<number>) {
+    const res = useFetch(GET_CHARACTERS_BY_ID(arr));
+    return res;
+}
+
+export {GetAllCharacters, GetAllEpisodes, GetEpisode, GetCharacter, GetInfoPages, GetCharactersByID};

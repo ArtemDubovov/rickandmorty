@@ -28,9 +28,9 @@ const GET_EPISODE = (id: string): TypedDocumentNode => gql`
     }
 `
 
-const GET_ALL_CHARACTERS = (page: string): TypedDocumentNode =>  gql`
+const GET_ALL_CHARACTERS = (page: string, filter: string): TypedDocumentNode =>  gql`
     query GetCharacters {
-        characters (page: ${page}) {
+        characters (page: ${page}, filter: { name: "${filter}" }) {
             info {
                 count
                 pages
@@ -83,6 +83,35 @@ const GET_INFO_PAGE = () => {
     `
 }
 
+const GET_CHARACTERS_BY_ID = (arr: Array<number>) => {
+    console.log(arr);
+    console.log(arr.join(','));
+    return gql`
+        {
+            charactersByIds (ids: [${arr.join(',')}]) {
+                id
+                name
+                species
+                gender
+                status
+                created
+                origin {
+                    id
+                }
+                location {
+                    id
+                    name
+                }
+                image
+                episode {
+                    id
+                }
+            }
+        }
+    `
+}
 
 
-export {GET_ALL_EPISODES, GET_EPISODE, GET_ALL_CHARACTERS, GET_CHARACTER, GET_INFO_PAGE};
+
+
+export {GET_ALL_EPISODES, GET_EPISODE, GET_ALL_CHARACTERS, GET_CHARACTER, GET_INFO_PAGE, GET_CHARACTERS_BY_ID};

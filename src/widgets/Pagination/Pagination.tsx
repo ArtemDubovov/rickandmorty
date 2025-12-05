@@ -17,4 +17,4 @@ const Pagination = () => {
     )
 }
 
-export default memo(Pagination);
+export default Pagination;
