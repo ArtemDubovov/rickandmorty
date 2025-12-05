@@ -16,9 +16,9 @@ interface CardListProps {
 }
 
 const CardList: FC<CardListProps> = ({page = 1, favor = false}) => {
-    const {favorites, addFavorites, removeFavorites, resetPage, updatePageCount} = useStoreApp((state) => state);
+    const {favorites, addFavorites, removeFavorites, resetPage, updatePageCount, tags} = useStoreApp((state) => state);
     const [searchValue, setSearchValue] = useState('');
-    const {loading, error, data} = favor ? GetCharactersByID(favorites) : GetAllCharacters(String(page), searchValue); // Favor or all
+    const {loading, error, data} = favor ? GetCharactersByID(favorites) : GetAllCharacters(String(page), [...tags, {name: 'name', value: searchValue}]); // Favor or all
     const [favoritesState, setFavoritesState] = useState(useStoreApp((state) => state.favorites));
 
     const updateSearchValue = () => { // Задерка при ввода в инпутbya

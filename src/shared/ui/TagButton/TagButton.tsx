@@ -1,22 +1,22 @@
-import { FC, useState } from "react";
+import React, { ChangeEvent, FC } from "react";
 
 import './style.css';
 
 interface ITageButtonProps {
     tagName: string;
-    fn: (value: boolean) => void;
+    fn: (value: string) => void;
+    keys: string[] | undefined
 }
 
-const TagButton: FC<ITageButtonProps> = ({tagName, fn}) => {
-    const [isActive, setIsActive] = useState(false);
-    const handleButton = () => {
-        setIsActive((isActive) => !isActive);
-        fn(isActive);
+const TagButton: FC<ITageButtonProps> = ({tagName, fn, keys}) => {
+    const handleButton = (e: ChangeEvent<HTMLSelectElement>) => {
+        fn(e.target.value);
     }
     return(
-        <button onClick={handleButton} className={`tag-button__${isActive ? 'active' : 'inactive'}`}>
-            {tagName}
-        </button>
+        <select onChange={(e) => handleButton(e)} >
+            <option value="" selected disabled hidden>{`Select ${tagName}:`}</option>
+            {keys && keys.map(k => <option value={k}>{k}</option>)}
+        </select>
     )
 }
 
