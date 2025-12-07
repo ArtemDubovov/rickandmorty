@@ -2,7 +2,7 @@ import { useFetch } from "../../shared/api/api";
 
 import { GET_CHARACTER, GET_ALL_CHARACTERS, GET_ALL_EPISODES, GET_EPISODE, GET_INFO_PAGE, GET_CHARACTERS_BY_ID } from "./query";
 
-function GetAllCharacters (page: string, filter: {name: string, value: string}[]) {
+function GetAllCharacters (page: string, filter: {name: string, value: string}[] = []) {
     const res = useFetch(GET_ALL_CHARACTERS(page, filter));
     return res;
 }

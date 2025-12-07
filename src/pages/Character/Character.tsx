@@ -15,11 +15,11 @@ const Character = () => {
     console.log(data);
 
     return(
-        <>
+        <div className="page">
             {loading && <Loader />}
             {error && <ErrorMessage message={error.message}/>}
             <CharacterInfo id={id}/>
-        </>
+        </div>
     )
 }
 

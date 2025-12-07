@@ -18,7 +18,7 @@ interface CardListProps {
 const CardList: FC<CardListProps> = ({page = 1, favor = false}) => {
     const {favorites, addFavorites, removeFavorites, resetPage, updatePageCount, tags} = useStoreApp((state) => state);
     const [searchValue, setSearchValue] = useState('');
-    const {loading, error, data} = favor ? GetCharactersByID(favorites) : GetAllCharacters(String(page), [...tags, {name: 'name', value: searchValue}]); // Favor or all
+    const {loading, data} = favor ? GetCharactersByID(favorites) : GetAllCharacters(String(page), [...tags, {name: 'name', value: searchValue}]); // Favor or all
     const [favoritesState, setFavoritesState] = useState(useStoreApp((state) => state.favorites));
 
     const updateSearchValue = () => { // Задерка при ввода в инпутbya
@@ -52,7 +52,7 @@ const CardList: FC<CardListProps> = ({page = 1, favor = false}) => {
         if (!loading && data && !favor) {// Установлено кол-во страниц в глобальный стор
             updatePageCount(+data.characters.info.pages); 
         }
-    }, []);
+    }, [loading]);
 
     return(
         <>

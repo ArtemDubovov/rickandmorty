@@ -28,9 +28,9 @@ const GET_EPISODE = (id: string): TypedDocumentNode => gql`
     }
 `
 
-const GET_ALL_CHARACTERS = (page: string, filter: {name: string, value: string }[]): TypedDocumentNode =>  gql`
+const GET_ALL_CHARACTERS = (page: string, filter?: {name: string, value: string }[]): TypedDocumentNode =>  gql`
     query GetCharacters {
-        characters (page: ${page}, filter: {${filter.map(f => `${f.name}: "${f.value}"`).join(' ,')}}) {
+        characters (page: ${page}, filter: {${filter ? filter?.map(f => `${f.name}: "${f.value}"`).join(' ,') : ''}}) {
             info {
                 count
                 pages

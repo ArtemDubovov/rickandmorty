@@ -1,7 +1,6 @@
-import {FC, memo, useCallback, useState} from "react";
+import {FC, memo, useState} from "react";
 
 import './style.css';
-import { TimeoutInfo } from "rxjs";
 
 interface ISearchInput {
     updateSearchValue: (newValue: string) => void; 

@@ -8,9 +8,8 @@ import TagList from "../../widgets/TagList/TagList";
 const Home: FC = () => {
     const { page} = useStoreApp((state: IStoreApp) => state);
 
-
     return(
-        <div>
+        <div className="page">
             <Pagination />
             <TagList />
             <CardList page={page} favor={false}/>
