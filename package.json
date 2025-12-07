@@ -1,6 +1,6 @@
 {
   "name": "rickandmorty",
-  "homepage": "https://artemdubovov.github.io/",
+  "homepage": "https://artemdubovov.github.io/rickandmorty",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
