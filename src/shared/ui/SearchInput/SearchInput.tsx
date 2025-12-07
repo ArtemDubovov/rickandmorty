@@ -4,10 +4,11 @@ import './style.css';
 
 interface ISearchInput {
     updateSearchValue: (newValue: string) => void; 
+    defaultValue: string;
 }
 
-const SearchInput: FC<ISearchInput> = ({updateSearchValue}) => {
-    const [value, setValue] = useState('');
+const SearchInput: FC<ISearchInput> = ({updateSearchValue, defaultValue}) => {
+    const [value, setValue] = useState(defaultValue);
     let handleChange = (value: string) => {
         updateSearchValue(value);
         setValue(value);

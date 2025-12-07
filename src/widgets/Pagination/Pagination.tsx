@@ -1,11 +1,13 @@
+import { FC } from 'react';
+
 import './style.css';
 
-import useStoreApp, { IStoreApp } from "../../App/providers/store";
+import useStoreApp from "../../App/providers/store";
 import BtnPagination from "../../shared/ui/BtnPagination/BtnPagination";
 
-const Pagination = () => {
-    const {page, pageCount, decrPage, incrPage} = useStoreApp((store: IStoreApp) => store);
-    console.log(page, pageCount, ': ------------');
+const Pagination: FC = () => {
+    const {page, pageCount, decrPage, incrPage} = useStoreApp();
+
     return(
         <div>
             {page - 1 > 0 && <BtnPagination fn={decrPage} page={page - 1}/>}
