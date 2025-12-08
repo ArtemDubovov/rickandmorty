@@ -8,4 +8,17 @@
     justify-content: center;
     background-color: gray;
     max-width: 240px;
+    transition: 0.3s all;
 }
+
+.card_button-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    background-color: rgb(186, 202, 179);
+}
+

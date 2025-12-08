@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from "react";
+import { FC } from "react";
 
 import './styles/style.css';
 
@@ -10,14 +10,18 @@ interface IButtonTagProps {
 }
 
 const ButtonTag: FC<IButtonTagProps> = ({tagName, fn, keys, defaultValue = ''}) => {
-    const handleButton = (e: ChangeEvent<HTMLSelectElement>) => {
-        fn(e.target.value);
+    const handleButton = (e: string) => {
+        fn(e);
     }
     return(
-        <select defaultValue={defaultValue} onChange={(e) => handleButton(e)} >
-            <option value="" selected disabled hidden>{`Select ${tagName}:`}</option>
-            {keys && keys.map(k => <option value={k}>{k}</option>)}
-        </select>
+        <div className="tag-wrapper">
+            <label className="tag-label" htmlFor={tagName}>Choose {tagName}: </label>
+            <select className="tag-select" id={tagName} defaultValue={defaultValue} onChange={(e) => handleButton(e.target.value)} >
+                <option className="tag-option" value="" selected disabled hidden></option>
+                {keys && keys.map(k => <option value={k}>{k}</option>)}
+            </select>
+        </div>
+        
     )
 }
 

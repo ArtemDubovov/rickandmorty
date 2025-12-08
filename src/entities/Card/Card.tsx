@@ -1,4 +1,4 @@
-import {FC, memo} from "react";
+import {FC} from "react";
 
 import { IAllCharactersType } from "../api/types";
 import Button from "../../shared/ui/Buttons/ButtonLink/ButtonLink";
@@ -18,10 +18,13 @@ const Card: FC<ICardProps> = ({character, isFavorite}) => {
         <div className="card">
             <h2>{name}</h2>
             <img src={image} alt={name}/>
-            <Button text='More' link={url}/>
-            <ButtonFavorite id={id} isFavorite={isFavorite}/>
+            <div className="card_button-wrapper">
+                <Button text='More' link={url}/>
+                <ButtonFavorite id={id} isFavorite={isFavorite}/>
+            </div>
+
         </div>       
     )
 }
 
-export default memo(Card);
+export default Card;

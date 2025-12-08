@@ -9,7 +9,7 @@ const Pagination: FC = () => {
     const {page, pageCount, decrPage, incrPage} = useStoreApp();
 
     return(
-        <div>
+        <div className='pagination'>
             {page - 1 > 0 && <ButtonPagination fn={decrPage} page={page - 1}/>}
             <ButtonPagination page={page}  disabled/>
             {page + 1 <= pageCount &&<ButtonPagination page={page + 1} fn={incrPage}/>}

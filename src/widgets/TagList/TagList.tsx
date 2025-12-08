@@ -7,12 +7,24 @@ import './styles/style.css';
 
 const TagList: FC = () => {
     const {tags, updateTag, resetPage} = useStoreApp();
+
+    const handleUpdateTag = (name: string) => {
+        return function (value: string) {
+            updateTag(name, value);
+            resetPage();
+        }
+    }
     return(
         <>
-            {tags?.map(tag => <ButtonTag defaultValue={tag.value} key={tag.name} fn={(value) => {
-                updateTag(tag.name, value);
-                resetPage();
-            }} tagName={tag.name} keys={tag.keys}/>)}
+            {tags && tags.map(tag =>
+                <ButtonTag
+                    defaultValue={tag.value}
+                    key={tag.name}
+                    fn={handleUpdateTag(tag.name)}
+                    tagName={tag.name}
+                    keys={tag.keys}
+                />
+            )}
         </>
     )
 }

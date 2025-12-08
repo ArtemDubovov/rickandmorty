@@ -14,7 +14,11 @@ const InputSearch: FC<IInputSearch> = ({updateSearchValue, defaultValue}) => {
         setValue(value);
     }
     return(
-        <input onChange={(e) => handleChange(e.target.value)} value={value} />
+        <div>
+            <label>Enter name: </label>
+            <input className="input-search" onChange={(e) => handleChange(e.target.value)} value={value} />
+        </div>
+        
     )
 }
 

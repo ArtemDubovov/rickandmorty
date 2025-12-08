@@ -1,6 +1,6 @@
 .pagination {
     display: flex;
     justify-content: flex-start;
-    gap: 20px;
-    flex-wrap: nowrap;
+    gap: 0px;
+    flex-wrap: wrap;
 }

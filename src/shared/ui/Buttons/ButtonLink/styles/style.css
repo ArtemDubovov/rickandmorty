@@ -1,7 +1,11 @@
 .button {
     padding: 12px;
-    margin: 12px;
+    margin: 20px 12px 8px;
     border-radius: 6px;
     background-color: rgb(103, 221, 103);
     color: black;
+}
+
+.button {
+    flex-grow: 1;
 }

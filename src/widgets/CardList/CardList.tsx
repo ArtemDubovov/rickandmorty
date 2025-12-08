@@ -1,4 +1,4 @@
-import {FC, useState, useEffect, memo} from "react";
+import { FC, useState, useEffect } from "react";
 
 import Card from "../../entities/Card";
 import Loader from "../../shared/ui/Loader/Loader";
@@ -17,7 +17,7 @@ interface ICardListProps {
 const TIMER_INPUT = 1000;
 
 const CardList: FC<ICardListProps> = ({favor = false}) => {
-    const {favorites, resetPage, updatePageCount, tags, page, setSearchInputStore, searchInputStore, pageCount} = useStoreApp();
+    const {favorites, resetPage, updatePageCount, tags, page, setSearchInputStore, searchInputStore} = useStoreApp();
     const [searchValue, setSearchValue] = useState(searchInputStore);
     const {loading, data} = favor ? GetCharactersByID(favorites) : GetAllCharacters(String(page), [...tags, {name: 'name', value: searchValue}]); // Favor or all
 
@@ -40,11 +40,11 @@ const CardList: FC<ICardListProps> = ({favor = false}) => {
     const characters = favor ? data?.charactersByIds : data?.characters.results;
     
     useEffect(() => {
-        if (!loading && !favor && data && pageCount !== data.characters.info.pages) {
+        if (!loading && !favor && data) {
             updatePageCount(data.characters.info.pages);
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [loading])
+    }, [loading, tags])
 
 
     return(
@@ -52,7 +52,7 @@ const CardList: FC<ICardListProps> = ({favor = false}) => {
             {!favor && <InputSearch defaultValue={searchInputStore} updateSearchValue={updateSearchValueT}/>}
             <div className="card_list">
                 {loading && <Loader />}
-                {favor && favorites.length === 0 && <div>No characters.</div>}
+                {favor && favorites.length === 0 && !loading && <div>No characters.</div>}
                 {characters && characters.map((character: IAllCharactersType) =>
                     <Card
                         key={character.id}
@@ -64,4 +64,4 @@ const CardList: FC<ICardListProps> = ({favor = false}) => {
     )
 }
 
-export default memo(CardList);
+export default CardList;

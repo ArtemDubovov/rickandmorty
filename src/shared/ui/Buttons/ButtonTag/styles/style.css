@@ -1,7 +1,8 @@
-.tag-button__active {
-    background-color: green;
+
+.tag-select {
+    border-radius: 10px;
 }
 
-.tag-button__inactive {
-    background-color: gray;
+.tag-wrapper {
+    margin: 6px;
 }
