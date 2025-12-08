@@ -1,13 +1,13 @@
 import {FC, memo, useState} from "react";
 
-import './style.css';
+import './styles/style.css';
 
-interface ISearchInput {
+interface IInputSearch {
     updateSearchValue: (newValue: string) => void; 
     defaultValue: string;
 }
 
-const SearchInput: FC<ISearchInput> = ({updateSearchValue, defaultValue}) => {
+const InputSearch: FC<IInputSearch> = ({updateSearchValue, defaultValue}) => {
     const [value, setValue] = useState(defaultValue);
     let handleChange = (value: string) => {
         updateSearchValue(value);
@@ -18,4 +18,4 @@ const SearchInput: FC<ISearchInput> = ({updateSearchValue, defaultValue}) => {
     )
 }
 
-export default memo(SearchInput);
+export default memo(InputSearch);

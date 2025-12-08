@@ -1,20 +1,17 @@
-import {FC} from "react";
+import {FC, memo} from "react";
 
-import { allCharactersType } from "../api/types";
+import { IAllCharactersType } from "../api/types";
+import Button from "../../shared/ui/Buttons/ButtonLink/ButtonLink";
+import ButtonFavorite from "../../shared/ui/Buttons/ButtonFavorite/ButtonFavorite";
 
-import './style.css';
-import Button from "../../shared/ui/ButtonLink/ButtonLink";
-import ButtonFavorite from "../../shared/ui/ButtonFavorite/ButtonFavorite";
+import './styles/style.css';
 
-
-interface CardProps {
-    character: allCharactersType,
+interface ICardProps {
+    character: IAllCharactersType,
     isFavorite: boolean;
-    addFavorites: (id: string) => void;
-    removeFavorites: (id: string) => void;
 }
 
-const Card: FC<CardProps> = ({character, isFavorite, addFavorites, removeFavorites}) => {
+const Card: FC<ICardProps> = ({character, isFavorite}) => {
     const {name, image, id} = character;
     const url = `/card/${id}`;
     return(
@@ -22,9 +19,9 @@ const Card: FC<CardProps> = ({character, isFavorite, addFavorites, removeFavorit
             <h2>{name}</h2>
             <img src={image} alt={name}/>
             <Button text='More' link={url}/>
-            <ButtonFavorite addFavorite={addFavorites} removeFavorite={removeFavorites} id={id} isFavorite={isFavorite}/>
+            <ButtonFavorite id={id} isFavorite={isFavorite}/>
         </div>       
     )
 }
 
-export default Card;
+export default memo(Card);

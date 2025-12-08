@@ -1,4 +1,4 @@
-interface allCharactersType {
+interface IAllCharactersType {
     name: string,
     image: string,
     created: string,
@@ -13,4 +13,4 @@ interface allCharactersType {
 
 }
 
-export type {allCharactersType};
+export type {IAllCharactersType};

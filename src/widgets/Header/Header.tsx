@@ -1,15 +1,10 @@
 import { FC } from "react";
-import Button from "../../shared/ui/ButtonLink/ButtonLink";
+import Button from "../../shared/ui/Buttons/ButtonLink/ButtonLink";
 
 import './styles/style.css';
 
-interface ILink  {
-    path: string;
-    name: string;
-}
-
 interface IHeaderProps {
-    links: ILink[];
+    links: {path: string, name: string}[];
 }
 
 const Header: FC<IHeaderProps> = ({links}) => {

@@ -1,28 +1,27 @@
 import {FC, useState, useEffect, memo} from "react";
 
-import { GetAllCharacters, GetCharactersByID } from "../../entities/api/api";
-import Card from "../../entities/Card/Card";
-import { allCharactersType } from "../../entities/api/types";
+import Card from "../../entities/Card";
 import Loader from "../../shared/ui/Loader/Loader";
 import useStoreApp from "../../App/providers/store";
-import { removeID } from "../../features/removeID";
+import InputSearch from "../../shared/ui/InputSearch";
 
-import './style.css';
-import SearchInput from "../../shared/ui/SearchInput/SearchInput";
+import { GetAllCharacters, GetCharactersByID } from "../../entities/api";
+import { IAllCharactersType } from "../../entities/api/types";
 
-interface CardListProps {
+import './styles/style.css';
+
+interface ICardListProps {
     favor?: boolean
 }
 
 const TIMER_INPUT = 1000;
 
-const CardList: FC<CardListProps> = ({favor = false}) => {
-    const {favorites, addFavorites, removeFavorites, resetPage, updatePageCount, tags, page, setSearchInputStore, searchInputStore} = useStoreApp();
+const CardList: FC<ICardListProps> = ({favor = false}) => {
+    const {favorites, resetPage, updatePageCount, tags, page, setSearchInputStore, searchInputStore, pageCount} = useStoreApp();
     const [searchValue, setSearchValue] = useState(searchInputStore);
     const {loading, data} = favor ? GetCharactersByID(favorites) : GetAllCharacters(String(page), [...tags, {name: 'name', value: searchValue}]); // Favor or all
-    const [favoritesState, setFavoritesState] = useState(favorites);
 
-    const updateSearchValue = () => { // Задерка при ввода в инпутbya
+    const updateSearchValue = () => { // Задерка при ввода в инпут
         let timerID: ReturnType<typeof setTimeout> = setTimeout(() => {}); 
         return (value: string) => {
             if (timerID) {
@@ -38,37 +37,27 @@ const CardList: FC<CardListProps> = ({favor = false}) => {
 
     const updateSearchValueT = updateSearchValue();
 
-    const addFavoriteState = (id: string) => {
-        addFavorites(+id);
-        setFavoritesState([...favoritesState, +id]);
-    }
-    const removeFavoriteState = (id: string) => {
-        removeFavorites(+id);
-        setFavoritesState(removeID(favoritesState, +id));
-    }
-
     const characters = favor ? data?.charactersByIds : data?.characters.results;
     
     useEffect(() => {
-        if (!loading && !favor && data) {
+        if (!loading && !favor && data && pageCount !== data.characters.info.pages) {
             updatePageCount(data.characters.info.pages);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loading])
 
 
     return(
         <>
-            {!favor && <SearchInput defaultValue={searchInputStore} updateSearchValue={updateSearchValueT}/>}
+            {!favor && <InputSearch defaultValue={searchInputStore} updateSearchValue={updateSearchValueT}/>}
             <div className="card_list">
                 {loading && <Loader />}
-                {favor && favoritesState.length === 0 && <div>No characters.</div>}
-                {characters && characters.map((character: allCharactersType) =>
+                {favor && favorites.length === 0 && <div>No characters.</div>}
+                {characters && characters.map((character: IAllCharactersType) =>
                     <Card
-                        addFavorites={addFavoriteState}
-                        removeFavorites={removeFavoriteState}
                         key={character.id}
                         character={character}
-                        isFavorite={favoritesState.includes(+character.id)}
+                        isFavorite={favorites.includes(+character.id)}
                     />)}
             </div>
         </>

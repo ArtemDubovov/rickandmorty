@@ -6,7 +6,7 @@ import Error from "../../pages/Error";
 import Layout from "../layout/Layout";
 import Favorites from "../../pages/Favorites";
 
-const routers = [
+const ROUTERS = [
 	{
 		path: "/",
 		element: <Home />,
@@ -30,7 +30,7 @@ function AppRouter() {
         <BrowserRouter>
             <Routes>
                 {
-                    routers.map(r =>
+                    ROUTERS.map(r =>
                         <Route
                             key={r.path}
                             path={r.path}

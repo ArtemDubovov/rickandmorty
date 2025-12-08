@@ -1,14 +1,14 @@
 import {FC} from "react";
 
-import './style.css';
+import './styles/style.css';
 
-interface IBtnPaginationProps {
+interface IButtonPaginationProps {
     page: number,
     fn?: () => void,
     disabled?: boolean
 }
 
-const BtnPagination: FC<IBtnPaginationProps> = ({page, fn, disabled = false}) => {
+const ButtonPagination: FC<IButtonPaginationProps> = ({page, fn, disabled = false}) => {
     return(
         <button disabled={disabled} onClick={fn} className="btn-pagination">
             {page}
@@ -16,4 +16,4 @@ const BtnPagination: FC<IBtnPaginationProps> = ({page, fn, disabled = false}) =>
     )
 }
 
-export default BtnPagination;
+export default ButtonPagination;

@@ -1,18 +1,18 @@
 import { FC } from 'react';
 
-import './style.css';
-
 import useStoreApp from "../../App/providers/store";
-import BtnPagination from "../../shared/ui/BtnPagination/BtnPagination";
+import ButtonPagination from "../../shared/ui/Buttons/ButtonPagination";
+
+import './styles/style.css';
 
 const Pagination: FC = () => {
     const {page, pageCount, decrPage, incrPage} = useStoreApp();
 
     return(
         <div>
-            {page - 1 > 0 && <BtnPagination fn={decrPage} page={page - 1}/>}
-            <BtnPagination page={page}  disabled/>
-            {page + 1 <= pageCount &&<BtnPagination page={page + 1} fn={incrPage}/>}
+            {page - 1 > 0 && <ButtonPagination fn={decrPage} page={page - 1}/>}
+            <ButtonPagination page={page}  disabled/>
+            {page + 1 <= pageCount &&<ButtonPagination page={page + 1} fn={incrPage}/>}
         </div>
     )
 }

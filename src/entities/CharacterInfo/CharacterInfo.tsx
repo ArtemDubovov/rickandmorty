@@ -1,19 +1,18 @@
-import {FC} from "react";
-
+import {FC, memo} from "react";
 
 import { GetCharacter } from "../api/api";
-
-import './style.css';
 import ErrorMessage from "../../shared/ui/ErrorMessage/ErrorMessage";
 import Loader from "../../shared/ui/Loader/Loader";
 
-interface CharacterInfoProps {
+import './styles/style.css';
+
+interface ICharacterInfoProps {
     id: string
 }
 
-const CharacterInfo: FC<CharacterInfoProps> = ({id}) => {
+const CharacterInfo: FC<ICharacterInfoProps> = ({id}) => {
     if (!id) {
-        return <></>;
+        return <ErrorMessage message="ID is not correct."/>;
     }
     const {loading, error, data} = GetCharacter(id);
     const character = data?.character;
@@ -32,12 +31,10 @@ const CharacterInfo: FC<CharacterInfoProps> = ({id}) => {
                         <p>Location: {character.location.name}</p>
                         <p>Episode amount: {character.episode.length}</p>
                     </div>
-                    
-                    
                 </div>
             }            
         </>
     )
 }
 
-export default CharacterInfo;
+export default memo(CharacterInfo);

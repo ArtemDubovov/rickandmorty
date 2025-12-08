@@ -1,6 +1,6 @@
 import { gql, TypedDocumentNode } from "@apollo/client";
 
-const GET_ALL_EPISODES = (): TypedDocumentNode => gql`
+const GET_ALL_EPISODES_QUERY = (): TypedDocumentNode => gql`
     query GetEpisodes {
         episodes {
             info {
@@ -13,7 +13,7 @@ const GET_ALL_EPISODES = (): TypedDocumentNode => gql`
     }
 `;
 
-const GET_EPISODE = (id: string): TypedDocumentNode => gql`
+const GET_EPISODE_QUERY = (id: string): TypedDocumentNode => gql`
     query GetEpisodeByID {
         episodesByIds(ids: ${id}) {
             characters {
@@ -28,7 +28,7 @@ const GET_EPISODE = (id: string): TypedDocumentNode => gql`
     }
 `
 
-const GET_ALL_CHARACTERS = (page: string, filter?: {name: string, value: string }[]): TypedDocumentNode =>  gql`
+const GET_ALL_CHARACTERS_QUERY = (page: string, filter?: {name: string, value: string }[]): TypedDocumentNode =>  gql`
     query GetCharacters {
         characters (page: ${page}, filter: {${filter ? filter?.map(f => `${f.name}: "${f.value}"`).join(' ,') : ''}}) {
             info {
@@ -47,7 +47,7 @@ const GET_ALL_CHARACTERS = (page: string, filter?: {name: string, value: string 
 `
 
 
-const GET_CHARACTER = (id: string): TypedDocumentNode => gql`
+const GET_CHARACTER_QUERY = (id: string): TypedDocumentNode => gql`
     query GetCharacterByID {
         character (id: ${id}) {
             id
@@ -71,7 +71,7 @@ const GET_CHARACTER = (id: string): TypedDocumentNode => gql`
     } 
 `
 
-const GET_INFO_PAGE = () => {
+const GET_INFO_PAGE_QUERY = () => {
     return gql`
         {
             characters (page: 0) {
@@ -83,7 +83,7 @@ const GET_INFO_PAGE = () => {
     `
 }
 
-const GET_CHARACTERS_BY_ID = (arr: Array<number>) => {
+const GET_CHARACTERS_BY_ID_QUERY = (arr: Array<number>) => {
     console.log(arr);
     console.log(arr.join(','));
     return gql`
@@ -114,4 +114,4 @@ const GET_CHARACTERS_BY_ID = (arr: Array<number>) => {
 
 
 
-export {GET_ALL_EPISODES, GET_EPISODE, GET_ALL_CHARACTERS, GET_CHARACTER, GET_INFO_PAGE, GET_CHARACTERS_BY_ID};
+export {GET_ALL_EPISODES_QUERY, GET_EPISODE_QUERY, GET_ALL_CHARACTERS_QUERY, GET_CHARACTER_QUERY, GET_INFO_PAGE_QUERY, GET_CHARACTERS_BY_ID_QUERY};

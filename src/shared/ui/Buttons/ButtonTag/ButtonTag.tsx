@@ -1,15 +1,15 @@
-import React, { ChangeEvent, FC } from "react";
+import { ChangeEvent, FC } from "react";
 
-import './style.css';
+import './styles/style.css';
 
-interface ITageButtonProps {
+interface IButtonTagProps {
     tagName: string;
     fn: (value: string) => void;
     keys: string[] | undefined,
     defaultValue?: string
 }
 
-const TagButton: FC<ITageButtonProps> = ({tagName, fn, keys, defaultValue = ''}) => {
+const ButtonTag: FC<IButtonTagProps> = ({tagName, fn, keys, defaultValue = ''}) => {
     const handleButton = (e: ChangeEvent<HTMLSelectElement>) => {
         fn(e.target.value);
     }
@@ -21,4 +21,4 @@ const TagButton: FC<ITageButtonProps> = ({tagName, fn, keys, defaultValue = ''})
     )
 }
 
-export default TagButton;
+export default ButtonTag;

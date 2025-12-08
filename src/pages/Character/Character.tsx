@@ -1,15 +1,16 @@
+import { FC } from "react";
+
 import { useParams } from "react-router-dom";
-import { GetCharacter } from "../../entities/api/api";
-import CharacterInfo from "../../entities/CharacterInfo/CharacterInfo";
-import Loader from "../../shared/ui/Loader/Loader";
-import ErrorMessage from "../../shared/ui/ErrorMessage/ErrorMessage";
+import { GetCharacter } from "../../entities/api";
+import CharacterInfo from "../../entities/CharacterInfo";
+import Loader from "../../shared/ui/Loader";
+import ErrorMessage from "../../shared/ui/ErrorMessage";
+import Error from "../Error";
 
-
-
-const Character = () => {
+const Character: FC = () => {
     let { id } = useParams();
     if (!id) {
-        return <></>; // Сделать переход на error
+        return <Error />; // переход на error если нет ID, норм?
     }
     const {loading, error, data} = GetCharacter(id);
     console.log(data);

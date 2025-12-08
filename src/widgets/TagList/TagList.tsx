@@ -1,14 +1,15 @@
 import { FC } from "react";
 
-import TagButton from "../../shared/ui/TagButton/TagButton";
+import ButtonTag from "../../shared/ui/Buttons/ButtonTag";
 import useStoreApp from "../../App/providers/store";
+
+import './styles/style.css';
 
 const TagList: FC = () => {
     const {tags, updateTag, resetPage} = useStoreApp();
-    console.log(tags, ' tags------------');
     return(
         <>
-            {tags?.map(tag => <TagButton defaultValue={tag.value} key={tag.name} fn={(value) => {
+            {tags?.map(tag => <ButtonTag defaultValue={tag.value} key={tag.name} fn={(value) => {
                 updateTag(tag.name, value);
                 resetPage();
             }} tagName={tag.name} keys={tag.keys}/>)}

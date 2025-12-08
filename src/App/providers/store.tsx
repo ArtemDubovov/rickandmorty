@@ -1,4 +1,4 @@
-import { create, createStore } from 'zustand'
+import { create } from 'zustand'
 import { updateStatusTag } from '../../features/updateStatusTag';
 import { removeID } from '../../features/removeID';
 import { persist } from 'zustand/middleware'
@@ -8,6 +8,7 @@ type IStoreApp = {
     pageCount: number;
     favorites: Array<number>;
     searchInputStore: string;
+    tags: {name: string, value: string, keys?: string[]}[],
     setSearchInputStore: (input: string) => void;
     incrPage: () => void;
     decrPage: () => void;
@@ -16,7 +17,6 @@ type IStoreApp = {
     updatePageCount: (count: number) => void;
     removeFavorites: (id: number) => void;
     addFavorites: (id: number) => void;
-    tags: {name: string, value: string, keys?: string[]}[],
     updateTag: (name: string, value: string) => void;
 }
 
@@ -25,7 +25,7 @@ const useStoreApp = create<IStoreApp>()(
     (set) => ({
       page: 1,
       pageCount: 0, // ?? нужно ли хранить? можно тянуть при загрузке страницы.
-      favorites: [], // Для теста
+      favorites: [], // Возможно лучше Set
       searchInputStore: '',
       tags: [
         {

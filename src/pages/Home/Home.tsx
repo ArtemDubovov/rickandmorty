@@ -1,8 +1,8 @@
 import { FC } from "react";
 
-import CardList from "../../widgets/CardList/CardList";
-import Pagination from "../../widgets/Pagination/Pagination";
-import TagList from "../../widgets/TagList/TagList";
+import CardList from "../../widgets/CardList";
+import Pagination from "../../widgets/Pagination";
+import TagList from "../../widgets/TagList";
 
 const Home: FC = () => {
     return(

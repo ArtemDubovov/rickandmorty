@@ -1,10 +1,11 @@
-import React from 'react';
+import { FC } from 'react';
 
-import './style/style.css';
-import CardList from "../../widgets/CardList/CardList";
+import CardList from "../../widgets/CardList";
+
+import './styles/style.css';
 
 
-const Favorites = () => {
+const Favorites: FC = () => {
     return(
         <div className='page'>
             <CardList favor={true}/>
