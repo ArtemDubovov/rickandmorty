@@ -1,7 +1,7 @@
 import {FC} from "react";
 
-import Button from "../../shared/ui/Buttons/ButtonLink/ButtonLink";
-import ButtonFavorite from "../../shared/ui/Buttons/ButtonFavorite/ButtonFavorite";
+import Button from "../../../shared/ui/Buttons/ButtonLink/ButtonLink";
+import ButtonFavorite from "../../../shared/ui/Buttons/ButtonFavorite/ButtonFavorite";
 import { ICardProps } from "./types";
 
 import './styles/style.css';

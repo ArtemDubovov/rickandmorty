@@ -3,6 +3,7 @@ import { IButtonTagProps } from "./types";
 import './styles/style.css';
 
 const ButtonTag: FC<IButtonTagProps> = ({tagName, fn, keys, defaultValue = ''}) => {
+    // Убрать
     const handleButton = (e: string) => {
         fn(e);
     }

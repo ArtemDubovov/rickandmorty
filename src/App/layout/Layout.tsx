@@ -8,6 +8,9 @@ import { ILayoutProps } from "./types";
 
 import './style.css';
 
+/* -------------------------------------------------------------------------- */
+/*                         React.FC<PropsWithChildren>                        */
+/* -------------------------------------------------------------------------- */
 const Layout: FC<ILayoutProps> = ({page}) => {
     return(
         <div className="layout">

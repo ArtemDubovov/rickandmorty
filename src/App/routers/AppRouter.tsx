@@ -6,6 +6,10 @@ import Error from "../../pages/Error";
 import Layout from "../layout/Layout";
 import Favorites from "../../pages/Favorites";
 
+/* -------------------------------------------------------------------------- */
+/*                                Дублирование                                */
+/* -------------------------------------------------------------------------- */
+
 const ROUTERS = [
 	{
 		path: "/",

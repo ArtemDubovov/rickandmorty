@@ -4,10 +4,16 @@ import { IButtonFavoriteProps } from "./types";
 
 import './styles/style.css';
 
+/* -------------------------------------------------------------------------- */
+/*                           Добавить пропс onPress                           */
+/* -------------------------------------------------------------------------- */
 const ButtonFavorite: FC<IButtonFavoriteProps> = ({isFavorite, id}) => {
     const [favorite, setFavorite] = useState(isFavorite);
-    const {addFavorites, removeFavorites} = useStoreApp(); // Норм? Или лучше в shared прокидывать пропсами
+    // const {addFavorites, removeFavorites} = useStoreApp(); // Норм? Или лучше в shared прокидывать пропсами
 
+    /* -------------------------------------------------------------------------- */
+    /*                                 useCallback                                */
+    /* -------------------------------------------------------------------------- */
     const handleClick = () => {
         setFavorite((prev) => !prev);
         if (!favorite) {
@@ -16,6 +22,7 @@ const ButtonFavorite: FC<IButtonFavoriteProps> = ({isFavorite, id}) => {
             removeFavorites(+id);
         }
     }
+
     return(
         <button
             className={isFavorite ? 'favorite-btn--enable' : 'favorite-btn--disable'}

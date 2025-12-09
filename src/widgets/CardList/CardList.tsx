@@ -1,12 +1,12 @@
 import { FC, useState, useEffect } from "react";
 
-import Card from "../../entities/Card";
+import Card from "../../entities/ui/Card";
 import Loader from "../../shared/ui/Loader/Loader";
 import useStoreApp from "../../App/providers/store";
 import InputSearch from "../../shared/ui/InputSearch";
 
 import { GetAllCharacters, GetCharactersByID } from "../../entities/api";
-import { IAllCharactersType } from "../../entities/api/types";
+import { IAllCharactersType } from "../../entities/types/types";
 import { ICardListProps } from "./types";
 
 import './styles/style.css';
@@ -17,8 +17,18 @@ const CardList: FC<ICardListProps> = ({favor = false}) => {
 
     const {favorites, resetPage, updatePageCount, tags, page, setSearchInputStore, searchInputStore} = useStoreApp();
     const [searchValue, setSearchValue] = useState(searchInputStore);
+    /* -------------------------------------------------------------------------- */
+    /*                      Использование хуков через условия                     */
+    /* -------------------------------------------------------------------------- */
     const {loading, data} = favor ? GetCharactersByID(favorites) : GetAllCharacters(String(page), [...tags, {name: 'name', value: searchValue}]); // Favor or all
 
+
+    /* -------------------------------------------------------------------------- */
+    /*                            Использовать debounce                           */
+    /* -------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------- */
+    /*                                 useCallback                                */
+    /* -------------------------------------------------------------------------- */
     const updateSearchValue = () => { // Задерка при вводе в инпут
         let timerID: ReturnType<typeof setTimeout> = setTimeout(() => {}); 
         return (value: string) => {
@@ -33,8 +43,14 @@ const CardList: FC<ICardListProps> = ({favor = false}) => {
         }
     }
 
+    /* -------------------------------------------------------------------------- */
+    /*                                     ???                                    */
+    /* -------------------------------------------------------------------------- */
     const updateSearchValueT = updateSearchValue();
 
+    /* -------------------------------------------------------------------------- */
+    /*                                   useMemo                                  */
+    /* -------------------------------------------------------------------------- */
     const characters = favor ? data?.charactersByIds : data?.characters.results;
     
     useEffect(() => {

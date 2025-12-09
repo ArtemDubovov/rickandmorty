@@ -1,4 +1,4 @@
-import { IAllCharactersType } from "../api/types";
+import { IAllCharactersType } from "../../types/types";
 
 interface ICardProps {
     character: IAllCharactersType,
