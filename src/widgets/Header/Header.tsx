@@ -1,11 +1,7 @@
 import { FC } from "react";
 import Button from "../../shared/ui/Buttons/ButtonLink/ButtonLink";
-
+import { IHeaderProps } from "./types";
 import './styles/style.css';
-
-interface IHeaderProps {
-    links: {path: string, name: string}[];
-}
 
 const Header: FC<IHeaderProps> = ({links}) => {
     return(

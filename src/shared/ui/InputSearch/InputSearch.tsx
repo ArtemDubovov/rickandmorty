@@ -1,11 +1,7 @@
 import {FC, memo, useState} from "react";
+import { IInputSearch } from "./types";
 
 import './styles/style.css';
-
-interface IInputSearch {
-    updateSearchValue: (newValue: string) => void; 
-    defaultValue: string;
-}
 
 const InputSearch: FC<IInputSearch> = ({updateSearchValue, defaultValue}) => {
     const [value, setValue] = useState(defaultValue);

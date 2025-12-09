@@ -7,21 +7,19 @@ import InputSearch from "../../shared/ui/InputSearch";
 
 import { GetAllCharacters, GetCharactersByID } from "../../entities/api";
 import { IAllCharactersType } from "../../entities/api/types";
+import { ICardListProps } from "./types";
 
 import './styles/style.css';
 
-interface ICardListProps {
-    favor?: boolean
-}
-
-const TIMER_INPUT = 1000;
+const DELAY_INPUT = 1000;
 
 const CardList: FC<ICardListProps> = ({favor = false}) => {
+
     const {favorites, resetPage, updatePageCount, tags, page, setSearchInputStore, searchInputStore} = useStoreApp();
     const [searchValue, setSearchValue] = useState(searchInputStore);
     const {loading, data} = favor ? GetCharactersByID(favorites) : GetAllCharacters(String(page), [...tags, {name: 'name', value: searchValue}]); // Favor or all
 
-    const updateSearchValue = () => { // Задерка при ввода в инпут
+    const updateSearchValue = () => { // Задерка при вводе в инпут
         let timerID: ReturnType<typeof setTimeout> = setTimeout(() => {}); 
         return (value: string) => {
             if (timerID) {
@@ -31,7 +29,7 @@ const CardList: FC<ICardListProps> = ({favor = false}) => {
                 resetPage();
                 setSearchValue(value);
                 setSearchInputStore(value);
-            }, TIMER_INPUT);
+            }, DELAY_INPUT);
         }
     }
 

@@ -1,26 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
 
 import Header from "../../widgets/Header";
 import Footer from "../../widgets/Footer";
 
+import { LINKS } from "./const";
+import { ILayoutProps } from "./types";
+
 import './style.css';
 
-interface LayoutProps {
-    page: React.ReactElement
-}
-
-const LINKS = [
-	{
-		path: "/",
-        name: 'Home'
-	},
-    {
-		path: "/favorites",
-        name: 'Favorites'
-	},
-];
-
-function Layout({page}: LayoutProps) {
+const Layout: FC<ILayoutProps> = ({page}) => {
     return(
         <div className="layout">
             <Header links={LINKS}/>

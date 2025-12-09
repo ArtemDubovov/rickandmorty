@@ -1,13 +1,6 @@
 import { FC } from "react";
-
+import { IButtonTagProps } from "./types";
 import './styles/style.css';
-
-interface IButtonTagProps {
-    tagName: string;
-    fn: (value: string) => void;
-    keys: string[] | undefined,
-    defaultValue?: string
-}
 
 const ButtonTag: FC<IButtonTagProps> = ({tagName, fn, keys, defaultValue = ''}) => {
     const handleButton = (e: string) => {

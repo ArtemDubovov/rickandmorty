@@ -1,12 +1,7 @@
 import {FC} from "react";
 import { Link } from "react-router-dom";
-
+import { IButtonProps } from "./types";
 import './styles/style.css';
-
-interface IButtonProps {
-    text: string,
-    link: string
-}
 
 const ButtonLink: FC<IButtonProps> = ({text, link}) => {
     return(

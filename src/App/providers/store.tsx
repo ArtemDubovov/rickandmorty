@@ -3,22 +3,7 @@ import { updateStatusTag } from '../../features/updateStatusTag';
 import { removeID } from '../../features/removeID';
 import { persist } from 'zustand/middleware'
 
-type IStoreApp = {
-    page: number;
-    pageCount: number;
-    favorites: Array<number>;
-    searchInputStore: string;
-    tags: {name: string, value: string, keys?: string[]}[],
-    setSearchInputStore: (input: string) => void;
-    incrPage: () => void;
-    decrPage: () => void;
-    resetPage: () => void;
-    updatePage: (newPage: number) => void;
-    updatePageCount: (count: number) => void;
-    removeFavorites: (id: number) => void;
-    addFavorites: (id: number) => void;
-    updateTag: (name: string, value: string) => void;
-}
+import { IStoreApp } from './types';
 
 const useStoreApp = create<IStoreApp>()(
   persist(

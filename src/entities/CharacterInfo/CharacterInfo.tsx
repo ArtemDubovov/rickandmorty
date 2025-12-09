@@ -3,24 +3,11 @@ import {FC, memo} from "react";
 import { GetCharacter } from "../api/api";
 import ErrorMessage from "../../shared/ui/ErrorMessage/ErrorMessage";
 import Loader from "../../shared/ui/Loader/Loader";
+import { ICharacterInfoProps } from "./types";
 
 import './styles/style.css';
 
-const OPTIONS = {
-  era: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-  weekday: 'long',
-  timezone: 'UTC',
-  hour: 'numeric',
-  minute: 'numeric',
-  second: 'numeric'
-};
 
-interface ICharacterInfoProps {
-    id: string
-}
 
 const CharacterInfo: FC<ICharacterInfoProps> = ({id}) => {
     if (!id) {
@@ -28,13 +15,12 @@ const CharacterInfo: FC<ICharacterInfoProps> = ({id}) => {
     }
     const {loading, error, data} = GetCharacter(id);
     const character = data?.character;
-
     return(
         <>
             {loading && <Loader />}
             {error && <ErrorMessage message={error.message}/>}
             {character && 
-                // Создать карточку в shared или норм в 
+                // Создать карточку в отдельно или норм в 
                 <div className="character_info">  
                     <img src={character.image} alt={character.name}/>
                     <div className="character_info_content_wrapper">
