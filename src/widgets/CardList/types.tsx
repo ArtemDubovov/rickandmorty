@@ -1,5 +1,6 @@
-interface ICardListProps {
-    favor?: boolean
-}
+import { ICharacter } from "../../entities/types/types";
 
-export type {ICardListProps};
+export interface ICardListProps {
+    characters: ICharacter[],
+    favor: boolean
+}

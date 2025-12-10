@@ -1,9 +1,8 @@
 import { create } from 'zustand'
-import { updateStatusTag } from '../../features/updateStatusTag';
-import { removeID } from '../../features/removeID';
 import { persist } from 'zustand/middleware'
 
 import { IStoreApp } from './types';
+import { removeID, updateStatusTag } from '../../helpers';
 
 const useStoreApp = create<IStoreApp>()(
   persist(

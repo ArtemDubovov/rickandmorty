@@ -1,7 +1,7 @@
-import { IAllCharactersType } from "../../types/types";
+import { ICharacter } from "../../types/types";
 
 interface ICardProps {
-    character: IAllCharactersType,
+    character: ICharacter,
     isFavorite: boolean;
 }
 

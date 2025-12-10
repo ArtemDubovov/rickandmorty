@@ -1,11 +1,11 @@
 import {FC, memo} from "react";
 
-import { GetCharacter } from "../api/api";
-import ErrorMessage from "../../shared/ui/ErrorMessage/ErrorMessage";
-import Loader from "../../shared/ui/Loader/Loader";
 import { ICharacterInfoProps } from "./types";
 
 import './styles/style.css';
+import ErrorMessage from "../../../shared/ui/ErrorMessage";
+import Loader from "../../../shared/ui/Loader";
+import { GetCharacter } from "../../api";
 
 
 

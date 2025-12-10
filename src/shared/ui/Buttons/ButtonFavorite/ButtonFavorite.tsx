@@ -5,7 +5,7 @@ import './styles/style.css';
 
 const ButtonFavorite: FC<IButtonFavoriteProps> = ({isFavorite, id, onPress}) => {
     const handleClick = useCallback(() => {
-        onPress(isFavorite, id);
+        onPress(!isFavorite, id);
     }, [onPress, id, isFavorite]);
 
     return(

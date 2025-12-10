@@ -1,10 +1,11 @@
 import { FC } from "react";
 
 import { useParams } from "react-router-dom";
-import CharacterInfo from "../../entities/CharacterInfo";
 import Error from "../Error";
+import CharacterInfo from "../../entities/ui/CharacterInfo";
 
 import './styles/style.css';
+
 
 const Character: FC = () => {
     let { id } = useParams();
