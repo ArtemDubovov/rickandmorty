@@ -1,6 +1,6 @@
 interface IButtonTagProps {
     tagName: string;
-    fn: (value: string) => void;
+    fn: (name: string, value: string) => void;
     keys: string[] | undefined,
     defaultValue?: string
 }

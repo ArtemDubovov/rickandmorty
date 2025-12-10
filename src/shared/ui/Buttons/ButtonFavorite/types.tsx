@@ -1,6 +1,7 @@
 interface IButtonFavoriteProps {
     isFavorite: boolean;
-    id: string | number;
+    id: number;
+    onPress: (value: boolean, id: number) => void;
 }
 
 export type {IButtonFavoriteProps};

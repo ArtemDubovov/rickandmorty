@@ -1,17 +1,12 @@
-import React, { FC } from "react";
+import React, { FC, PropsWithChildren, ReactNode } from "react";
 
 import Header from "../../widgets/Header";
 import Footer from "../../widgets/Footer";
-
 import { LINKS } from "./const";
-import { ILayoutProps } from "./types";
 
 import './style.css';
 
-/* -------------------------------------------------------------------------- */
-/*                         React.FC<PropsWithChildren>                        */
-/* -------------------------------------------------------------------------- */
-const Layout: FC<ILayoutProps> = ({page}) => {
+const Layout: React.FC<PropsWithChildren<{page: ReactNode}>> = ({page}) => {
     return(
         <div className="layout">
             <Header links={LINKS}/>

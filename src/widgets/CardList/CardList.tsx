@@ -1,5 +1,6 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, useCallback } from "react";
 
+import { debounce } from "lodash";
 import Card from "../../entities/ui/Card";
 import Loader from "../../shared/ui/Loader/Loader";
 import useStoreApp from "../../App/providers/store";
@@ -22,31 +23,18 @@ const CardList: FC<ICardListProps> = ({favor = false}) => {
     /* -------------------------------------------------------------------------- */
     const {loading, data} = favor ? GetCharactersByID(favorites) : GetAllCharacters(String(page), [...tags, {name: 'name', value: searchValue}]); // Favor or all
 
+    const updateSearchValue = useCallback((value: string) => {
+        debounce(() => { // Задерка при вводе в инпут
+            resetPage();
+            setSearchValue(value);
+            setSearchInputStore(value);
+        }, DELAY_INPUT);
+    }, [resetPage, setSearchInputStore, setSearchValue]);
 
-    /* -------------------------------------------------------------------------- */
-    /*                            Использовать debounce                           */
-    /* -------------------------------------------------------------------------- */
-    /* -------------------------------------------------------------------------- */
-    /*                                 useCallback                                */
-    /* -------------------------------------------------------------------------- */
-    const updateSearchValue = () => { // Задерка при вводе в инпут
-        let timerID: ReturnType<typeof setTimeout> = setTimeout(() => {}); 
-        return (value: string) => {
-            if (timerID) {
-                clearTimeout(timerID);
-            }
-            timerID = setTimeout(() => {
-                resetPage();
-                setSearchValue(value);
-                setSearchInputStore(value);
-            }, DELAY_INPUT);
-        }
-    }
 
     /* -------------------------------------------------------------------------- */
     /*                                     ???                                    */
     /* -------------------------------------------------------------------------- */
-    const updateSearchValueT = updateSearchValue();
 
     /* -------------------------------------------------------------------------- */
     /*                                   useMemo                                  */
@@ -63,7 +51,7 @@ const CardList: FC<ICardListProps> = ({favor = false}) => {
 
     return(
         <>
-            {!favor && <InputSearch defaultValue={searchInputStore} updateSearchValue={updateSearchValueT}/>}
+            {!favor && <InputSearch defaultValue={searchInputStore} updateSearchValue={updateSearchValue}/>}
             <div className="card_list">
                 {loading && <Loader />}
                 {favor && favorites.length === 0 && !loading && <div>No characters.</div>}

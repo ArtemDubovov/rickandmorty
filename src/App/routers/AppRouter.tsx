@@ -1,33 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Home from "../../pages/Home";
-import CardInfo from "../../pages/Character";
-import Error from "../../pages/Error";
+
 import Layout from "../layout/Layout";
-import Favorites from "../../pages/Favorites";
-
-/* -------------------------------------------------------------------------- */
-/*                                Дублирование                                */
-/* -------------------------------------------------------------------------- */
-
-const ROUTERS = [
-	{
-		path: "/",
-		element: <Home />,
-	},
-	{
-		path: "/card/:id",
-		element: <CardInfo />,
-	},
-    {
-		path: "/favorites",
-		element: <Favorites />,
-	},
-    {
-		path: "/*",
-		element: <Error />,
-	},
-];
+import { ROUTERS } from "./const";
 
 function AppRouter() {
     return(
