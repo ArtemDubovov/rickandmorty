@@ -1,5 +1,7 @@
+import { ICharacter } from "../../types/types";
+
 interface ICharacterInfoProps {
-    id: string
+    characterData: ICharacter
 }
 
 export type {ICharacterInfoProps};

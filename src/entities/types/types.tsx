@@ -22,7 +22,7 @@ export interface ICharacter {
     gender: string;
     image: string;
     created: string;
-    episode: IEpisode[],
+    episode: IEpisode[];
 }
 
 export interface IDataCharacter {

@@ -1,20 +1,38 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
-import Error from "../Error";
 import CharacterInfo from "../../entities/ui/CharacterInfo";
 
 import './styles/style.css';
-
+import { GetCharacter } from "../../entities/api";
+import Loader from "../../shared/ui/Loader";
+import ErrorMessage from "../../shared/ui/ErrorMessage";
+import { ICharacter } from "../../entities/types/types";
 
 const Character: FC = () => {
     let { id } = useParams();
-    if (!id) {
-        return <Error />; // переход на error если нет ID, норм?
-    }
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [characterData, setCharacterData] = useState({});
+    useEffect(() => {
+        setIsLoading(true);
+        const asyncFetch = async () => {
+            const {error, data} = await GetCharacter(id as string);
+            if (error) {
+                setError(error.message);
+                return;
+            }
+            setCharacterData(data?.character);
+            setIsLoading(false);
+        }
+        asyncFetch();
+    }, [])
+
     return(
         <div className="page">
-            <CharacterInfo id={id}/>
+            {isLoading && <Loader />}
+            {error && <ErrorMessage message={error}/>}
+            {characterData && <CharacterInfo characterData={characterData as ICharacter}/>}
         </div>
     )
 }
