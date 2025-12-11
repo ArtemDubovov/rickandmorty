@@ -12,6 +12,7 @@ const Card: FC<ICardProps> = ({character, isFavorite}) => {
     const {name, image, id} = character;
     const URL_CARD = `/card/${id}`;
     const onPress = useCallback((value: boolean, id: number) => {
+        console.log(value, id);
         if (value) {
             addFavorites(id);
         } else {

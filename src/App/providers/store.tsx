@@ -9,7 +9,7 @@ const useStoreApp = create<IStoreApp>()(
     (set) => ({
       page: 1,
       pageCount: 0, // ?? нужно ли хранить? можно тянуть при загрузке страницы.
-      favorites: [], // Возможно лучше Set
+      favorites: [1, 2, 3, 4, 5, 6, 7, 8, 9], // Возможно лучше Set
       searchInputStore: '',
       tags: [
         {

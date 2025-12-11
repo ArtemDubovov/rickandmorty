@@ -84,11 +84,9 @@ const GET_INFO_PAGE_QUERY = () => {
 }
 
 const GET_CHARACTERS_BY_ID_QUERY = (arr: Array<number>) => {
-    console.log(arr);
-    console.log(arr.join(','));
     return gql`
         {
-            charactersByIds (ids: [${arr.join(',')}]) {
+            charactersByIds (ids: [${arr.length ? arr.join(',') : '-1'}]) {
                 id
                 name
                 species

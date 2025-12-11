@@ -13,13 +13,13 @@ const CharacterInfo: FC<ICharacterInfoProps> = ({id}) => {
     if (!id) {
         return <ErrorMessage message="ID is not correct."/>;
     }
-    const {loading, error, data} = GetCharacter(id);
-    const character = data?.character;
+    // const {loading, error, data} = GetCharacter(id);
+    // const character = data?.character;
     return(
         <>
-            {loading && <Loader />}
-            {error && <ErrorMessage message={error.message}/>}
-            {character && 
+            {/* {loading && <Loader />}
+            {error && <ErrorMessage message={error.message}/>} */}
+            {/* {character && 
                 // Создать карточку в отдельно или норм в 
                 <div className="character_info">  
                     <img src={character.image} alt={character.name}/>
@@ -30,8 +30,8 @@ const CharacterInfo: FC<ICharacterInfoProps> = ({id}) => {
                         <p>Location: {character.location.name}</p>
                         <p>Episode amount: {character.episode.length}</p>
                     </div>
-                </div>
-            }            
+                </div> */}
+            {/* }             */}
         </>
     )
 }

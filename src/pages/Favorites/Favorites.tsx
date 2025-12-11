@@ -1,19 +1,36 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 
-import CardList from "../../widgets/CardList";
 
 import './styles/style.css';
 import useStoreApp from '../../App/providers/store';
 import { GetCharactersByID } from '../../entities/api';
 import Loader from '../../shared/ui/Loader';
+import CardList from '../../widgets/CardList';
+import ErrorMessage from '../../shared/ui/ErrorMessage';
 
 const Favorites: FC = () => {
     const {favorites} = useStoreApp();
-    const {loading, data} = GetCharactersByID(favorites)
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [characters, setCharacters] = useState([]);
+    useEffect(() => {
+        setIsLoading(true);
+        const asyncFetch = async () => {
+            const {error, data} = await GetCharactersByID(favorites);
+            if (error) {
+                setError(error.message);
+                return;
+            }
+            setCharacters(data?.charactersByIds);
+            setIsLoading(false);
+        }
+        asyncFetch();
+    }, [favorites])
     return(
         <div className='page'>
-            {loading && <Loader />}
-            {data && <CardList characters={data.charactersByIds} favor={true}/>}
+            {error && <ErrorMessage message={error}/>}
+            {isLoading && <Loader />}
+            {characters && <CardList characters={characters} favor={true}/>}
         </div>
     )
 }

@@ -3,6 +3,6 @@ export const removeID = (arr: number[], id: number) => {
     if (index !== -1) {
         arr.splice(index, 1);
     }
-    return arr;
+    return [...arr];
 }
 
