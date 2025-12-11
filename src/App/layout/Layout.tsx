@@ -6,7 +6,7 @@ import { LINKS } from "./const";
 
 import './style.css';
 
-const Layout: React.FC<PropsWithChildren<{page: ReactNode}>> = ({page}) => {
+const Layout: FC<PropsWithChildren<{page: ReactNode}>> = ({page}) => {
     return(
         <div className="layout">
             <Header links={LINKS}/>

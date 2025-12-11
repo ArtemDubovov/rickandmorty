@@ -26,7 +26,7 @@ const Character: FC = () => {
             setIsLoading(false);
         }
         asyncFetch();
-    }, [])
+    }, [id])
 
     return(
         <div className="page">
