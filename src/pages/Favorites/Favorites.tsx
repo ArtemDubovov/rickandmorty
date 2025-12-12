@@ -2,11 +2,11 @@ import { FC, useEffect, useState } from 'react';
 
 
 import './styles/style.css';
-import useStoreApp from '../../App/providers/store';
-import { GetCharactersByID } from '../../entities/api';
-import Loader from '../../shared/ui/Loader';
-import CardList from '../../widgets/CardList';
-import ErrorMessage from '../../shared/ui/ErrorMessage';
+import useStoreApp from 'App/providers/store';
+import { GetCharactersByIDs } from 'entities/api';
+import Loader from 'shared/ui/Loader';
+import CardList from 'widgets/CardList';
+import ErrorMessage from 'shared/ui/ErrorMessage/ErrorMessage';
 
 const Favorites: FC = () => {
     const {favorites} = useStoreApp();
@@ -16,7 +16,7 @@ const Favorites: FC = () => {
     useEffect(() => {
         setIsLoading(true);
         const asyncFetch = async () => {
-            const {error, data} = await GetCharactersByID(favorites);
+            const {error, data} = await GetCharactersByIDs(favorites);
             if (error) {
                 setError(error.message);
                 return;

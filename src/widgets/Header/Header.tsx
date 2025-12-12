@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Button from "../../shared/ui/Buttons/ButtonLink/ButtonLink";
+import Button from "shared/ui/Buttons/ButtonLink/ButtonLink";
 import { IHeaderProps } from "./types";
 import './styles/style.css';
 

@@ -17,7 +17,7 @@ function GetEpisode (id: string) {
     return res;
 }
 
-function GetCharacter (id: string) {
+function GetCharacterByID (id: string) {
     const res = fetchAPI(GET_CHARACTER_QUERY(id));
     return res;
 }
@@ -27,9 +27,9 @@ function GetInfoPages () {
     return res;
 }
 
-function GetCharactersByID (arr: Array<number>) {
+function GetCharactersByIDs (arr: Array<number>) {
     const res = fetchAPI(GET_CHARACTERS_BY_ID_QUERY(arr));
     return res;
 }
 
-export {GetAllCharacters, GetAllEpisodes, GetEpisode, GetCharacter, GetInfoPages, GetCharactersByID};
+export {GetAllCharacters, GetAllEpisodes, GetEpisode, GetCharacterByID, GetInfoPages, GetCharactersByIDs};

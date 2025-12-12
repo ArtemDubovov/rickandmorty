@@ -1,13 +1,12 @@
 import { ApolloClient, HttpLink, InMemoryCache, TypedDocumentNode } from "@apollo/client";
-import { URL } from "./const";
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: URL }),
+  link: new HttpLink({ uri: process.env.REACT_APP_API_URL }),
   cache: new InMemoryCache(),
 });
 
 async function fetchAPI(query: TypedDocumentNode) {
-    const {error, data} = await client.query({query: query}); // Найти замену useQuery
+    const {error, data} = await client.query({query: query});
     return { error, data};
 }
 

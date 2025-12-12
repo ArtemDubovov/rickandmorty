@@ -1,3 +1,3 @@
-import {GetAllCharacters, GetAllEpisodes, GetEpisode, GetCharacter, GetInfoPages, GetCharactersByID} from './api';
+import {GetAllCharacters, GetAllEpisodes, GetEpisode, GetCharacterByID, GetInfoPages, GetCharactersByIDs} from './api';
 
-export {GetAllCharacters, GetAllEpisodes, GetEpisode, GetCharacter, GetInfoPages, GetCharactersByID};
+export {GetAllCharacters, GetAllEpisodes, GetEpisode, GetCharacterByID, GetInfoPages, GetCharactersByIDs};

@@ -1,11 +1,11 @@
 import {FC, useCallback} from "react";
 
-import Button from "../../../shared/ui/Buttons/ButtonLink/ButtonLink";
-import ButtonFavorite from "../../../shared/ui/Buttons/ButtonFavorite/ButtonFavorite";
+import Button from "shared/ui/Buttons/ButtonLink";
+import ButtonFavorite from "shared/ui/Buttons/ButtonFavorite/ButtonFavorite";
 import { ICardProps } from "./types";
 
 import './styles/style.css';
-import useStoreApp from "../../../App/providers/store";
+import useStoreApp from "App/providers/store";
 
 const Card: FC<ICardProps> = ({character, isFavorite}) => {
     const {addFavorites, removeFavorites} = useStoreApp();

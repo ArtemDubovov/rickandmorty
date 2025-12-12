@@ -1,9 +1,9 @@
 import { FC, useCallback } from "react";
 
 import { debounce } from "lodash";
-import Card from "../../entities/ui/Card";
-import useStoreApp from "../../App/providers/store";
-import InputSearch from "../../shared/ui/InputSearch";
+import Card from "entities/ui/Card";
+import useStoreApp from "App/providers/store";
+import InputSearch from "shared/ui/InputSearch";
 
 import { ICardListProps } from "./types";
 

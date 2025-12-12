@@ -1,13 +1,14 @@
 import { FC, useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
-import CharacterInfo from "../../entities/ui/CharacterInfo";
+import CharacterInfo from "entities/ui/CharacterInfo";
 
 import './styles/style.css';
-import { GetCharacter } from "../../entities/api";
-import Loader from "../../shared/ui/Loader";
-import ErrorMessage from "../../shared/ui/ErrorMessage";
-import { ICharacter } from "../../entities/types/types";
+import { GetCharacterByID } from "entities/api";
+import Loader from 'shared/ui/Loader';
+import ErrorMessage from "shared/ui/ErrorMessage/ErrorMessage";
+import { ICharacter } from "entities/types/types";
+
 
 const Character: FC = () => {
     let { id } = useParams();
@@ -17,7 +18,7 @@ const Character: FC = () => {
     useEffect(() => {
         setIsLoading(true);
         const asyncFetch = async () => {
-            const {error, data} = await GetCharacter(id as string);
+            const {error, data} = await GetCharacterByID(id as string);
             if (error) {
                 setError(error.message);
                 return;

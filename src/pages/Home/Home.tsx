@@ -1,15 +1,15 @@
 import { FC, useEffect, useState } from "react";
 
-import CardList from "../../widgets/CardList";
-import Pagination from "../../widgets/Pagination";
-import TagList from "../../widgets/TagList";
+import CardList from "widgets/CardList";
+import Pagination from "widgets/Pagination";
+import TagList from "widgets/TagList";
 
 import './styles/style.css';
-import useStoreApp from "../../App/providers/store";
-import { GetAllCharacters } from "../../entities/api";
-import Loader from "../../shared/ui/Loader";
-import { IDataCharacter } from "../../entities/types/types";
-import ErrorMessage from "../../shared/ui/ErrorMessage";
+import useStoreApp from "App/providers/store";
+import { GetAllCharacters } from "entities/api";
+import Loader from "shared/ui/Loader";
+import { IDataCharacter } from "entities/types/types";
+import ErrorMessage from "shared/ui/ErrorMessage/ErrorMessage";
 
 const Home: FC = () => {
     const {tags, page, searchInputStore, updatePageCount} = useStoreApp();

@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
 import { IStoreApp } from './types';
-import { removeID, updateStatusTag } from '../../helpers';
+import { removeID, updateStatusTag } from 'helpers';
 
 const useStoreApp = create<IStoreApp>()(
   persist(

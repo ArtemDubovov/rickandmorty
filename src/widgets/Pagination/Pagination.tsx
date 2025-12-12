@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import useStoreApp from "../../App/providers/store";
-import ButtonPagination from "../../shared/ui/Buttons/ButtonPagination";
+import useStoreApp from "App/providers/store";
+import ButtonPagination from "shared/ui/Buttons/ButtonPagination";
 
 import './styles/style.css';
 
