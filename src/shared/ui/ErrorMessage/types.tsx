@@ -2,4 +2,4 @@ interface IErrorMessageProps {
     message: string
 }
 
-export type {IErrorMessageProps};
+export type { IErrorMessageProps }

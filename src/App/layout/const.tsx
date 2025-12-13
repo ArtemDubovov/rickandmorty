@@ -1,12 +1,12 @@
 const LINKS = [
-	{
-		path: "/",
-        name: 'Home'
-	},
     {
-		path: "/favorites",
-        name: 'Favorites'
-	},
-];
+        path: '/',
+        name: 'Home',
+    },
+    {
+        path: '/favorites',
+        name: 'Favorites',
+    },
+]
 
-export {LINKS};
+export { LINKS }

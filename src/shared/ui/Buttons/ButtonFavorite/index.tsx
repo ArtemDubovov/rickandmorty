@@ -1,3 +1,3 @@
-import ButtonFavorite from "./ButtonFavorite";
+import ButtonFavorite from './ButtonFavorite'
 
-export default ButtonFavorite;
+export default ButtonFavorite

@@ -1,6 +1,6 @@
 interface IButtonProps {
-    text: string,
+    text: string
     link: string
 }
 
-export type {IButtonProps};
+export type { IButtonProps }

@@ -1,3 +1,3 @@
-import ButtonPagination from "./ButtonPagination";
+import ButtonPagination from './ButtonPagination'
 
-export default ButtonPagination;
+export default ButtonPagination

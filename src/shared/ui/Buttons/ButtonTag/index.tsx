@@ -1,3 +1,3 @@
-import ButtonTag from "./ButtonTag";
+import ButtonTag from './ButtonTag'
 
-export default ButtonTag;
+export default ButtonTag

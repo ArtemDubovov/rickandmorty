@@ -5,19 +5,20 @@ body {
 }
 
 * {
-    font-family: "Stack Sans Headline", sans-serif;
+    font-family: 'Stack Sans Headline', sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     font-size: 16px;
 }
 
-html, body {
-  height: 100%;
+html,
+body {
+    height: 100%;
 }
 
 .page {
-  flex-grow: 0;
+    flex-grow: 0;
 }
 
 .light-theme {

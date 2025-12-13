@@ -1,7 +1,7 @@
-import { ICharacter } from "../../types/types";
+import { ICharacter } from '../../types/types'
 
 interface ICharacterInfoProps {
     characterData: ICharacter
 }
 
-export type {ICharacterInfoProps};
+export type { ICharacterInfoProps }

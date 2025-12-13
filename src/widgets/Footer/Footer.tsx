@@ -1,14 +1,20 @@
-import { FC } from "react";
+import { FC } from 'react'
 
-import './styles/style.css';
+import './styles/style.css'
 
 const Footer: FC = () => {
-    return(
+    return (
         <footer className="footer">
             <p className="footer_title">Created by Artem Dubovov</p>
-            <a rel="_blank" className="footer_link" href="https://github.com/ArtemDubovov">@github.com</a>
+            <a
+                rel="_blank"
+                className="footer_link"
+                href="https://github.com/ArtemDubovov"
+            >
+                @github.com
+            </a>
         </footer>
     )
 }
 
-export default Footer;
+export default Footer

@@ -1,4 +1,4 @@
-import { removeID } from "./removeID";
-import { updateStatusTag } from "./updateStatusTag";
+import { removeID } from './removeID'
+import { updateStatusTag } from './updateStatusTag'
 
-export {removeID, updateStatusTag};
+export { removeID, updateStatusTag }

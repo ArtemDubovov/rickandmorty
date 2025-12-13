@@ -1,21 +1,38 @@
-import { FC } from "react";
-import { IButtonTagProps } from "./types";
-import './styles/style.css';
+import { FC } from 'react'
+import { IButtonTagProps } from './types'
+import './styles/style.css'
 
-const ButtonTag: FC<IButtonTagProps> = ({tagName, fn, keys, defaultValue = ''}) => {
+const ButtonTag: FC<IButtonTagProps> = ({
+    tagName,
+    fn,
+    keys,
+    defaultValue = '',
+}) => {
     const handleButton = (value: string) => {
-        fn(tagName, value);
+        fn(tagName, value)
     }
-    return(
+    return (
         <div className="tag-wrapper">
-            <label className="tag-label" htmlFor={tagName}>Choose {tagName}: </label>
-            <select className="tag-select" id={tagName} defaultValue={defaultValue} onChange={(e) => handleButton(e.target.value)} >
-                <option className="tag-option" value="" selected disabled hidden></option>
-                {keys && keys.map(k => <option value={k}>{k}</option>)}
+            <label className="tag-label" htmlFor={tagName}>
+                Choose {tagName}:{' '}
+            </label>
+            <select
+                className="tag-select"
+                id={tagName}
+                defaultValue={defaultValue}
+                onChange={(e) => handleButton(e.target.value)}
+            >
+                <option
+                    className="tag-option"
+                    value=""
+                    selected
+                    disabled
+                    hidden
+                ></option>
+                {keys && keys.map((k) => <option value={k}>{k}</option>)}
             </select>
         </div>
-        
     )
 }
 
-export default ButtonTag;
+export default ButtonTag

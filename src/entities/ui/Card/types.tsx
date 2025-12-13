@@ -1,8 +1,8 @@
-import { ICharacter } from "../../types/types";
+import { ICharacter } from '../../types/types'
 
 interface ICardProps {
-    character: ICharacter,
-    isFavorite: boolean;
+    character: ICharacter
+    isFavorite: boolean
 }
 
-export type {ICardProps};
+export type { ICardProps }

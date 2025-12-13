@@ -1,6 +1,6 @@
 interface IInputSearch {
-    updateSearchValue: (newValue: string) => void; 
-    defaultValue: string;
+    updateSearchValue: (newValue: string) => void
+    defaultValue: string
 }
 
-export type {IInputSearch};
+export type { IInputSearch }

@@ -1,4 +1,4 @@
-import { gql, TypedDocumentNode } from "@apollo/client";
+import { gql, TypedDocumentNode } from '@apollo/client'
 
 const GET_ALL_EPISODES_QUERY = (): TypedDocumentNode => gql`
     query GetEpisodes {
@@ -11,7 +11,7 @@ const GET_ALL_EPISODES_QUERY = (): TypedDocumentNode => gql`
             }
         }
     }
-`;
+`
 
 const GET_EPISODE_QUERY = (id: string): TypedDocumentNode => gql`
     query GetEpisodeByID {
@@ -28,9 +28,12 @@ const GET_EPISODE_QUERY = (id: string): TypedDocumentNode => gql`
     }
 `
 
-const GET_ALL_CHARACTERS_QUERY = (page: string, filter?: {name: string, value: string }[]): TypedDocumentNode =>  gql`
+const GET_ALL_CHARACTERS_QUERY = (
+    page: string,
+    filter?: { name: string; value: string }[]
+): TypedDocumentNode => gql`
     query GetCharacters {
-        characters (page: ${page}, filter: {${filter ? filter?.map(f => `${f.name}: "${f.value}"`).join(' ,') : ''}}) {
+        characters (page: ${page}, filter: {${filter ? filter?.map((f) => `${f.name}: "${f.value}"`).join(' ,') : ''}}) {
             info {
                 count
                 pages
@@ -45,7 +48,6 @@ const GET_ALL_CHARACTERS_QUERY = (page: string, filter?: {name: string, value: s
         }
     }
 `
-
 
 const GET_CHARACTER_QUERY = (id: string): TypedDocumentNode => gql`
     query GetCharacterByID {
@@ -74,7 +76,7 @@ const GET_CHARACTER_QUERY = (id: string): TypedDocumentNode => gql`
 const GET_INFO_PAGE_QUERY = () => {
     return gql`
         {
-            characters (page: 0) {
+            characters(page: 0) {
                 info {
                     pages
                 }
@@ -109,7 +111,11 @@ const GET_CHARACTERS_BY_ID_QUERY = (arr: Array<number>) => {
     `
 }
 
-
-
-
-export {GET_ALL_EPISODES_QUERY, GET_EPISODE_QUERY, GET_ALL_CHARACTERS_QUERY, GET_CHARACTER_QUERY, GET_INFO_PAGE_QUERY, GET_CHARACTERS_BY_ID_QUERY};
+export {
+    GET_ALL_EPISODES_QUERY,
+    GET_EPISODE_QUERY,
+    GET_ALL_CHARACTERS_QUERY,
+    GET_CHARACTER_QUERY,
+    GET_INFO_PAGE_QUERY,
+    GET_CHARACTERS_BY_ID_QUERY,
+}

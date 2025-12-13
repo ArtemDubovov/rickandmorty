@@ -1,19 +1,19 @@
-import React, { FC, PropsWithChildren, ReactNode } from "react";
+import React, { FC, PropsWithChildren, ReactNode } from 'react'
 
-import Header from "widgets/Header";
-import Footer from "widgets/Footer";
-import { LINKS } from "./const";
+import Header from 'widgets/Header'
+import Footer from 'widgets/Footer'
+import { LINKS } from './const'
 
-import './style.css';
+import './style.css'
 
-const Layout: FC<PropsWithChildren<{page: ReactNode}>> = ({page}) => {
-    return(
+const Layout: FC<PropsWithChildren<{ page: ReactNode }>> = ({ page }) => {
+    return (
         <div className="layout">
-            <Header links={LINKS}/>
+            <Header links={LINKS} />
             {page}
             <Footer />
         </div>
     )
 }
 
-export default Layout;
+export default Layout

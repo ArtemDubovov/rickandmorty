@@ -1,21 +1,24 @@
-import {FC, memo, useState} from "react";
-import { IInputSearch } from "./types";
+import { FC, memo, useState } from 'react'
+import { IInputSearch } from './types'
 
-import './styles/style.css';
+import './styles/style.css'
 
-const InputSearch: FC<IInputSearch> = ({updateSearchValue, defaultValue}) => {
-    const [value, setValue] = useState(defaultValue);
+const InputSearch: FC<IInputSearch> = ({ updateSearchValue, defaultValue }) => {
+    const [value, setValue] = useState(defaultValue)
     let handleChange = (value: string) => {
-        updateSearchValue(value);
-        setValue(value);
+        updateSearchValue(value)
+        setValue(value)
     }
-    return(
+    return (
         <div>
             <label>Enter name: </label>
-            <input className="input-search" onChange={(e) => handleChange(e.target.value)} value={value} />
+            <input
+                className="input-search"
+                onChange={(e) => handleChange(e.target.value)}
+                value={value}
+            />
         </div>
-        
     )
 }
 
-export default memo(InputSearch);
+export default memo(InputSearch)

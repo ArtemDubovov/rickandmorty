@@ -1,3 +1,3 @@
-import CharacterInfo from "./CharacterInfo";
+import CharacterInfo from './CharacterInfo'
 
-export default CharacterInfo;
+export default CharacterInfo

@@ -1,7 +1,7 @@
 interface IButtonPaginationProps {
-    page: number,
-    fn?: () => void,
+    page: number
+    fn?: () => void
     disabled?: boolean
 }
 
-export type {IButtonPaginationProps};
+export type { IButtonPaginationProps }
